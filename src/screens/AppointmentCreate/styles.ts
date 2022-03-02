@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native'
-import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
-container: {
-  marginBottom: 24,
-},
+  container: {
+    flex: 1
+  }
 });

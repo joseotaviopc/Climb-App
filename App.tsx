@@ -10,6 +10,7 @@ import { useFonts } from "expo-font";
 
 import { Routes } from "./src/routes";
 import { Background } from "./src/components/Background";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   const [fontsLoaded] = useFonts({

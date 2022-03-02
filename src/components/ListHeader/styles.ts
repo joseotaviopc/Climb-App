@@ -6,7 +6,7 @@ container: {
   width: '100%',
   flexDirection: 'row',
   justifyContent: 'space-between',
-  paddingHorizontal: 24,
+  alignItems: 'flex-start',
 },
 title: {
   fontFamily: theme.fonts.title700,

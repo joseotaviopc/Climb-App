@@ -1,16 +1,21 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 
 import { styles } from "./styles";
 import PlayerSvg from "../../assets/player.svg";
+import CalendarSvg from "../../assets/calendar.svg";
 
 import { GuildIcon } from "../GuildIcon";
 import { categories } from "../../utils/categories";
 import { theme } from "../../global/styles/theme";
+import { useNavigation } from "@react-navigation/native";
 
 export type GuildProps = {
-  owner: true;
+  id: string;
+  name: string;
+  icon: null;
+  owner: boolean;
 };
 
 export type AppointmentProps = {
@@ -26,26 +31,46 @@ type Props = RectButtonProps & {
 };
 
 export function Appointment({ data, ...rest }: Props) {
-  const [category] = categories.filter((item) => item.id === data.category);
+  const [category] = categories.filter(
+    (item) => item.id === Number(data.category)
+  );
   const { owner } = data.guild;
   const { primary, on } = theme.colors;
+  const navigation = useNavigation();
+
+  function handleAppointmentDetails() {
+    navigation.navigate("AppointmentDetails");
+  }
+
   return (
     <RectButton {...rest}>
-      <View style={styles.container}>
-        <GuildIcon />
+      <Pressable onPress={handleAppointmentDetails}>
+        <View style={styles.container}>
+          <GuildIcon />
 
-        <View style={styles.content}>
-          <View style={styles.header}>
-            <Text style={styles.title}>{data.guild.name}</Text>
+          <View style={styles.content}>
+            <View style={styles.header}>
+              <Text style={styles.title}>{data.guild.name}</Text>
 
-            <Text style={styles.category}>{category.title}</Text>
-          </View>
+              <Text style={styles.category}>{category.title}</Text>
+            </View>
 
-          <View style={styles.playersInfo}>
-            <PlayerSvg fill={owner ? primary : on} />
+            <View style={styles.footer}>
+              <View style={styles.dateInfo}>
+                <CalendarSvg />
+                <Text style={styles.date}>{data.date}</Text>
+              </View>
+
+              <View style={styles.playersInfo}>
+                <PlayerSvg fill={owner ? primary : on} />
+                <Text style={[styles.player, { color: owner ? primary : on }]}>
+                  {owner ? "Local" : "Visitante"}
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
-      </View>
+      </Pressable>
     </RectButton>
   );
 }

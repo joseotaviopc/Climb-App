@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import { Text, FlatList, View } from "react-native";
-import { Appointment } from "../../components/Appointment";
-import { ButtonAdd } from "../../components/ButtonAdd";
-import { CategorySelect } from "../../components/CategorySelect";
-import { ListHeader } from "../../components/ListHeader";
+import { Button, FlatList, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
+import { CategorySelect } from "../../components/CategorySelect";
+import { Appointment } from "../../components/Appointment";
+import { ListDivider } from "../../components/ListDivider";
+import { Background } from "../../components/Background";
+import { ListHeader } from "../../components/ListHeader";
+// import { ButtonAdd } from "../../components/ButtonAdd";
 import { Profile } from "../../components/Profile";
 
 import { styles } from "./styles";
+import { theme } from "../../global/styles/theme";
 
 export function Home() {
   const [category, setCategory] = useState("");
+  const { primary } = theme.colors;
 
   const appointments = [
     {
@@ -25,34 +30,63 @@ export function Home() {
       date: "22/03 às 19:00h",
       description: "É hoje que vamos pegar uma pracinha clássica!",
     },
+    {
+      id: "2",
+      guild: {
+        id: "1",
+        name: "Peixoto",
+        icon: null,
+        owner: true,
+      },
+      category: "2",
+      date: "24/03 às 07:00h",
+      description: "Peixotin, sequin sequin!",
+    },
   ];
+
+  const navigation = useNavigation();
 
   function handleCategorySelect(categoryId: string) {
     categoryId === category ? setCategory("") : setCategory(categoryId);
   }
+
+  function handleAppointmentDetails() {
+    navigation.navigate("AppointmentDetails");
+  }
+
+  function handleAppointmentCreate() {
+    navigation.navigate("AppointmentCreate");
+  }
+
   return (
-    <View style={styles.constainer}>
+    <Background>
       <View style={styles.header}>
         <Profile />
-        <ButtonAdd />
+        {/* <ButtonAdd onPress={handleAppointmentCreate} /> */}
+        <View style={styles.button}>
+          <Button title="+" onPress={handleAppointmentCreate} color={primary} />
+        </View>
       </View>
 
-      <View>
+      <View style={styles.content}>
         <CategorySelect
-          categorySelected={category}
+          categorySelected={Number(category)}
           setCategory={handleCategorySelect}
         />
 
-        <View style={styles.content}>
-          <ListHeader title="Escaladas agendadas" subtitle="Total 6" />
+        <ListHeader title="Escaladas agendadas" subtitle="Total 6" />
 
-          <FlatList
-            data={appointments}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <Appointment data={item} />}
-          />
-        </View>
+        <FlatList
+          data={appointments}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Appointment data={item} onPress={handleAppointmentDetails} />
+          )}
+          ItemSeparatorComponent={() => <ListDivider />}
+          style={styles.matches}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
-    </View>
+    </Background>
   );
 }

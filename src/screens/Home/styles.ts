@@ -3,9 +3,6 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { theme } from "../../global/styles/theme";
 
 export const styles = StyleSheet.create({
-  constainer: {
-    flex: 1,
-  },
   header: {
     width: '100%',
     paddingHorizontal: 24,
@@ -13,5 +10,17 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginTop: getStatusBarHeight() + 26,
     marginBottom: 42,
+  },
+  content: {
+    paddingHorizontal: 24,
+  },
+  matches: {
+    marginTop: 24,
+  },
+  button: {
+    width: 48,
+    height: 48,
+    borderRadius: 8,
+    marginTop: 12,
   }
 });
