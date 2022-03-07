@@ -1,15 +1,19 @@
 import React from "react";
 import { View, Text, Image, Button } from "react-native";
 
-import IllustrationImg from "../../assets/illustration.png";
 import { ButtonIcon } from "../../components/ButtonIcon";
 import { Background } from "../../components/Background";
 
-import { styles } from "./styles";
-import { theme } from "../../global/styles/theme";
+import IllustrationImg from "../../assets/illustration.png";
+import { useNavigation } from "@react-navigation/native";
 
-export function SignIn({ navigation }) {
-  const { primary } = theme.colors;
+import { theme } from "../../global/styles/theme";
+import { styles } from "./styles";
+
+export function SignIn() {
+  // const { primary } = theme.colors;
+
+  const navigation = useNavigation();
 
   return (
     <Background>
@@ -39,7 +43,7 @@ export function SignIn({ navigation }) {
 
           <ButtonIcon
             title="Entrar com email"
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.navigate({ key: "Home" })}
           />
         </View>
       </View>

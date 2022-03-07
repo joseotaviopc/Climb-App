@@ -7,7 +7,7 @@ import { Appointment } from "../../components/Appointment";
 import { ListDivider } from "../../components/ListDivider";
 import { Background } from "../../components/Background";
 import { ListHeader } from "../../components/ListHeader";
-// import { ButtonAdd } from "../../components/ButtonAdd";
+import { ButtonAdd } from "../../components/ButtonAdd";
 import { Profile } from "../../components/Profile";
 
 import { styles } from "./styles";
@@ -51,21 +51,21 @@ export function Home() {
   }
 
   function handleAppointmentDetails() {
-    navigation.navigate("AppointmentDetails");
+    navigation.navigate({ key: "AppointmentDetails" });
   }
 
   function handleAppointmentCreate() {
-    navigation.navigate("AppointmentCreate");
+    navigation.navigate({ key: "AppointmentCreate" });
   }
 
   return (
     <Background>
       <View style={styles.header}>
         <Profile />
-        {/* <ButtonAdd onPress={handleAppointmentCreate} /> */}
-        <View style={styles.button}>
+        <ButtonAdd onPress={handleAppointmentCreate} />
+        {/* <View style={styles.button}>
           <Button title="+" onPress={handleAppointmentCreate} color={primary} />
-        </View>
+        </View> */}
       </View>
 
       <View style={styles.content}>
