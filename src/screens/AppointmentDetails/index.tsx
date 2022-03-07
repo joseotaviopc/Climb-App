@@ -1,16 +1,9 @@
 import React from "react";
 import { BorderlessButton } from "react-native-gesture-handler";
 import { theme } from "../../global/styles/theme";
-import {
-  Button,
-  FlatList,
-  ImageBackground,
-  Pressable,
-  Text,
-  View,
-} from "react-native";
-import { Fontisto } from "@expo/vector-icons";
+import { Button, FlatList, ImageBackground, Text, View } from "react-native";
 import BannerImg from "../../assets/banner.png";
+import { Fontisto } from "@expo/vector-icons";
 import { styles } from "./styles";
 
 import { Background } from "../../components/Background";
@@ -18,7 +11,6 @@ import { ListDivider } from "../../components/ListDivider";
 import { ListHeader } from "../../components/ListHeader";
 import { Header } from "../../components/Header";
 import { Member } from "../../components/Member";
-import { ButtonIcon } from "../../components/ButtonIcon";
 import { useNavigation } from "@react-navigation/native";
 
 export function AppointmentDetails() {
@@ -54,11 +46,9 @@ export function AppointmentDetails() {
       <Header
         title="Detalhes"
         action={
-          <Pressable onPress={navigation.goBack()}>
-            <BorderlessButton>
-              <Fontisto name="share" size={24} color={theme.colors.primary} />
-            </BorderlessButton>
-          </Pressable>
+          <BorderlessButton>
+            <Fontisto name="share" size={24} color={theme.colors.primary} />
+          </BorderlessButton>
         }
       ></Header>
 

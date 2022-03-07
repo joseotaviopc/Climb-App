@@ -91,4 +91,13 @@ Estilo *Stack*
   - aplicando no componente ```<Background>```, passando props *ReactNode* para os *childrens*
 
 # *To-do*
-- Imagens dos assets
+## ====================
+- 1:58
+## ====================
+
+``` js
+<GestureHandlerRootView>
+  <RectButton>
+  </RectButton>
+</GestureHandlerRootView>
+```

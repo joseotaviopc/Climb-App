@@ -11,16 +11,16 @@ export const styles = StyleSheet.create({
     marginTop: getStatusBarHeight() + 26,
     marginBottom: 42,
   },
+  button: {
+    width: 48,
+    height: 48,
+    borderRadius: 8,
+    marginTop: 12,
+  },
   content: {
     paddingHorizontal: 24,
   },
   matches: {
     marginTop: 24,
   },
-  button: {
-    width: 48,
-    height: 48,
-    borderRadius: 8,
-    marginTop: 12,
-  }
 });

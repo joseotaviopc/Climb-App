@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, Button } from "react-native";
 
 import IllustrationImg from "../../assets/illustration.png";
-// import { ButtonIcon } from "../../components/ButtonIcon";
+import { ButtonIcon } from "../../components/ButtonIcon";
 import { Background } from "../../components/Background";
 
 import { styles } from "./styles";
@@ -31,16 +31,16 @@ export function SignIn({ navigation }) {
             favoritas com seus amigos
           </Text>
 
-          <Button
+          {/* <Button
             color={primary}
             title="Entrar"
             onPress={() => navigation.navigate("Home")}
-          />
+          /> */}
 
-          {/* <ButtonIcon
+          <ButtonIcon
             title="Entrar com email"
             onPress={() => navigation.navigate("Home")}
-          /> */}
+          />
         </View>
       </View>
     </Background>

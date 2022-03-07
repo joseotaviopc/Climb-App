@@ -36,14 +36,14 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   members: {
-    // marginLeft: 24,
     marginTop: 27,
   },
   footer: {
     marginTop: 24,
     paddingVertical: 20,
-    // width: '80%',
-    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
     marginBottom: getBottomSpace(),
+    width: '75%'
   }
 })
