@@ -43,7 +43,7 @@ export function SignIn() {
 
           <ButtonIcon
             title="Entrar com email"
-            onPress={() => navigation.navigate({ key: "Home" })}
+            onPress={() => navigation.navigate("Home")}
           />
         </View>
       </View>

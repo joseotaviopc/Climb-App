@@ -1,5 +1,8 @@
 import React, { ReactNode } from "react";
-import { BorderlessButton } from "react-native-gesture-handler";
+import {
+  BorderlessButton,
+  GestureHandlerRootView,
+} from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import { theme } from "../../global/styles/theme";
 import { Feather } from "@expo/vector-icons";
@@ -26,9 +29,11 @@ export function Header({ title, action }: Props) {
       style={styles.container}
       colors={[secondary100, secondary40]}
     >
-      <BorderlessButton onPress={handleGoBack}>
-        <Feather name="arrow-left" size={24} color={heading} />
-      </BorderlessButton>
+      <GestureHandlerRootView>
+        <BorderlessButton onPress={handleGoBack}>
+          <Feather name="arrow-left" size={24} color={heading} />
+        </BorderlessButton>
+      </GestureHandlerRootView>
 
       <Text style={styles.title}>{title} </Text>
 

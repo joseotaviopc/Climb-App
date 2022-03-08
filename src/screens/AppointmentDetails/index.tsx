@@ -1,5 +1,9 @@
 import React from "react";
-import { BorderlessButton } from "react-native-gesture-handler";
+import {
+  BorderlessButton,
+  GestureHandlerRootView,
+  RectButton,
+} from "react-native-gesture-handler";
 import { theme } from "../../global/styles/theme";
 import { Button, FlatList, ImageBackground, Text, View } from "react-native";
 import BannerImg from "../../assets/banner.png";
@@ -12,6 +16,7 @@ import { ListHeader } from "../../components/ListHeader";
 import { Header } from "../../components/Header";
 import { Member } from "../../components/Member";
 import { useNavigation } from "@react-navigation/native";
+import { ButtonIcon } from "../../components/ButtonIcon";
 
 export function AppointmentDetails() {
   const members = [
@@ -46,9 +51,11 @@ export function AppointmentDetails() {
       <Header
         title="Detalhes"
         action={
-          <BorderlessButton>
-            <Fontisto name="share" size={24} color={theme.colors.primary} />
-          </BorderlessButton>
+          <GestureHandlerRootView>
+            <BorderlessButton>
+              <Fontisto name="share" size={24} color={theme.colors.primary} />
+            </BorderlessButton>
+          </GestureHandlerRootView>
         }
       ></Header>
 
@@ -72,9 +79,17 @@ export function AppointmentDetails() {
           style={styles.members}
         />
 
-        <View style={styles.footer}>
+        <GestureHandlerRootView>
+          <RectButton onPress={undefined} style={styles.footer}>
+            <ButtonIcon
+              title="Confirmar escalada"
+              onPress={() => navigation.navigate("Home")}
+            />
+          </RectButton>
+        </GestureHandlerRootView>
+        {/* <View style={styles.footer}>
           <Button title="Confirmar escalada" color={primary} onPress={null} />
-        </View>
+        </View> */}
       </View>
     </Background>
   );

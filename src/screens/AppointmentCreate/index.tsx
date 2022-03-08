@@ -5,7 +5,6 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
-  ModalProps,
 } from "react-native";
 
 import { CategorySelect } from "../../components/CategorySelect";
@@ -25,17 +24,18 @@ import { theme } from "../../global/styles/theme";
 import { Feather } from "@expo/vector-icons";
 import { styles } from "./styles";
 import { Modal } from "../Modal";
+import { LocalProps } from "../../components/Local";
 
 export function AppointmentCreate() {
   const [category, setCategory] = useState("");
-  const [openModal, setOpenModal] = useState(true);
-  const [modal, setModal] = useState<ModalProps>({} as ModalProps);
+  const [openModal, setOpenModal] = useState(false);
+  const [modal, setModal] = useState<LocalProps>({} as LocalProps);
 
   function handleOpenModal() {
     setOpenModal(true);
   }
 
-  function handleModalSelect(modalSelect: ModalProps) {
+  function handleModalSelect(modalSelect: LocalProps) {
     setModal(modalSelect);
     setOpenModal(false);
   }
@@ -66,13 +66,12 @@ export function AppointmentCreate() {
                     accessible
                     accessibilityRole="button"
                   >
-                    {
-                      <GuildIcon />
-                      // <View style={styles.image} />
-                    }
+                    {modal.icon ? <GuildIcon /> : <View style={styles.image} />}
 
                     <View style={styles.selectBody}>
-                      <Text style={styles.label}>Selecione um local</Text>
+                      <Text style={styles.label}>
+                        {modal.name ? modal.name : "Selecione um local"}
+                      </Text>
                     </View>
 
                     <Feather

@@ -51,11 +51,11 @@ export function Home() {
   }
 
   function handleAppointmentDetails() {
-    navigation.navigate({ key: "AppointmentDetails" });
+    navigation.navigate("AppointmentDetails");
   }
 
   function handleAppointmentCreate() {
-    navigation.navigate({ key: "AppointmentCreate" });
+    navigation.navigate("AppointmentCreate");
   }
 
   return (
