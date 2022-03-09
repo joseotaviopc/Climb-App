@@ -8,9 +8,10 @@ import {
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 
+import { AuthProvider } from "./src/hooks/auth";
+
 import { Routes } from "./src/routes";
 import { Background } from "./src/components/Background";
-import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -31,8 +32,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {/* <Signin /> */}
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </Background>
   );
 }

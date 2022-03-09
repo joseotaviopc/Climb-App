@@ -42,6 +42,66 @@ export function Home() {
       date: "24/03 às 07:00h",
       description: "Peixotin, sequin sequin!",
     },
+    {
+      id: "3",
+      guild: {
+        id: "1",
+        name: "Peixoto",
+        icon: null,
+        owner: true,
+      },
+      category: "2",
+      date: "24/03 às 07:00h",
+      description: "Peixotin, sequin sequin!",
+    },
+    {
+      id: "4",
+      guild: {
+        id: "1",
+        name: "Peixoto",
+        icon: null,
+        owner: true,
+      },
+      category: "2",
+      date: "24/03 às 07:00h",
+      description: "Peixotin, sequin sequin!",
+    },
+    {
+      id: "5",
+      guild: {
+        id: "1",
+        name: "Peixoto",
+        icon: null,
+        owner: true,
+      },
+      category: "2",
+      date: "24/03 às 07:00h",
+      description: "Peixotin, sequin sequin!",
+    },
+    {
+      id: "6",
+      guild: {
+        id: "1",
+        name: "Peixoto",
+        icon: null,
+        owner: true,
+      },
+      category: "2",
+      date: "24/03 às 07:00h",
+      description: "Peixotin, sequin sequin!",
+    },
+    {
+      id: "7",
+      guild: {
+        id: "1",
+        name: "Peixoto",
+        icon: null,
+        owner: true,
+      },
+      category: "2",
+      date: "24/03 às 07:00h",
+      description: "Peixotin, sequin sequin!",
+    },
   ];
 
   const navigation = useNavigation();
@@ -68,23 +128,25 @@ export function Home() {
         </View> */}
       </View>
 
-      <View style={styles.content}>
+      <View style={styles.category}>
         <CategorySelect
+          hasCheckBox
           categorySelected={Number(category)}
           setCategory={handleCategorySelect}
         />
-
-        <ListHeader title="Escaladas agendadas" subtitle="Total 6" />
-
-        <FlatList
-          data={appointments}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <Appointment data={item} />}
-          ItemSeparatorComponent={() => <ListDivider />}
-          style={styles.matches}
-          showsVerticalScrollIndicator={false}
-        />
       </View>
+
+      <ListHeader title="Escaladas agendadas" subtitle="Total 6" />
+
+      <FlatList
+        data={appointments}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <Appointment data={item} />}
+        ItemSeparatorComponent={() => <ListDivider />}
+        style={styles.matches}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 60 }}
+      />
     </Background>
   );
 }

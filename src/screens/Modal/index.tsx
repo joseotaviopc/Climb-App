@@ -30,6 +30,30 @@ export function Modal({ handleModalSelect }: Props) {
       icon: null,
       owner: true,
     },
+    {
+      id: "4",
+      name: "Bananal",
+      icon: null,
+      owner: false,
+    },
+    {
+      id: "5",
+      name: "Oriente",
+      icon: null,
+      owner: true,
+    },
+    {
+      id: "6",
+      name: "Bananal",
+      icon: null,
+      owner: false,
+    },
+    {
+      id: "7",
+      name: "Oriente",
+      icon: null,
+      owner: true,
+    },
   ];
 
   return (
@@ -40,9 +64,11 @@ export function Modal({ handleModalSelect }: Props) {
         renderItem={({ item }) => (
           <Local data={item} onPress={() => handleModalSelect(item)} />
         )}
-        ItemSeparatorComponent={() => <ListDivider />}
+        ItemSeparatorComponent={() => <ListDivider isCentered />}
+        ListHeaderComponent={() => <ListDivider isCentered />}
         showsVerticalScrollIndicator={false}
         style={styles.locals}
+        contentContainerStyle={{ paddingBottom: 60, paddingTop: 80 }}
       />
     </View>
   );

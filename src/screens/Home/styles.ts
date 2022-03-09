@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: getStatusBarHeight() + 26,
-    marginBottom: 42,
+    marginBottom: 36,
   },
   button: {
     width: 48,
@@ -17,10 +17,11 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 12,
   },
-  content: {
-    paddingHorizontal: 24,
+  category: {
+    // paddingHorizontal: 24,
   },
   matches: {
     marginTop: 24,
+    paddingHorizontal: 24
   },
 });

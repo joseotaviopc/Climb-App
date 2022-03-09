@@ -6,21 +6,16 @@ import { styles } from "./styles";
 import PlayerSvg from "../../assets/player.svg";
 import CalendarSvg from "../../assets/calendar.svg";
 
+import { LocalProps } from "../Local";
 import { GuildIcon } from "../GuildIcon";
-import { categories } from "../../utils/categories";
 import { theme } from "../../global/styles/theme";
+import { categories } from "../../utils/categories";
 import { useNavigation } from "@react-navigation/native";
-
-export type GuildProps = {
-  id: string;
-  name: string;
-  icon: null;
-  owner: boolean;
-};
+import { LinearGradient } from "expo-linear-gradient";
 
 export type AppointmentProps = {
   id: string;
-  guild: GuildProps;
+  guild: LocalProps;
   category: string;
   date: string;
   description: string;
@@ -35,7 +30,7 @@ export function Appointment({ data, ...rest }: Props) {
     (item) => item.id === Number(data.category)
   );
   const { owner } = data.guild;
-  const { primary, on } = theme.colors;
+  const { primary, on, secondary50, secondary70 } = theme.colors;
   const navigation = useNavigation();
 
   function handleAppointmentDetails() {
@@ -46,7 +41,12 @@ export function Appointment({ data, ...rest }: Props) {
     <RectButton {...rest}>
       <Pressable onPress={handleAppointmentDetails}>
         <View style={styles.container}>
-          <GuildIcon />
+          <LinearGradient
+            style={styles.guildIconContainer}
+            colors={[secondary50, secondary70]}
+          >
+            <GuildIcon />
+          </LinearGradient>
 
           <View style={styles.content}>
             <View style={styles.header}>

@@ -20,11 +20,12 @@ import {
   GestureHandlerRootView,
   RectButton,
 } from "react-native-gesture-handler";
+
+import { LocalProps } from "../../components/Local";
 import { theme } from "../../global/styles/theme";
 import { Feather } from "@expo/vector-icons";
 import { styles } from "./styles";
 import { Modal } from "../Modal";
-import { LocalProps } from "../../components/Local";
 
 export function AppointmentCreate() {
   const [category, setCategory] = useState("");
@@ -35,9 +36,17 @@ export function AppointmentCreate() {
     setOpenModal(true);
   }
 
+  function handleCloseModal() {
+    setOpenModal(false);
+  }
+
   function handleModalSelect(modalSelect: LocalProps) {
     setModal(modalSelect);
     setOpenModal(false);
+  }
+
+  function handleCategorySelect(categoryId: string) {
+    setCategory(categoryId);
   }
 
   return (
@@ -45,18 +54,20 @@ export function AppointmentCreate() {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <ScrollView>
-        <Background>
+      <Background>
+        <ScrollView>
           <Header title="Agendar escalada" />
 
           <View style={styles.content}>
             <Text style={styles.label}>Categoria</Text>
 
-            <CategorySelect
-              hasCheckBox
-              setCategory={setCategory}
-              categorySelected={Number(category)}
-            />
+            <View style={styles.adjustcategory}>
+              <CategorySelect
+                hasCheckBox
+                setCategory={handleCategorySelect}
+                categorySelected={Number(category)}
+              />
+            </View>
 
             <View style={styles.form}>
               <GestureHandlerRootView>
@@ -121,10 +132,10 @@ export function AppointmentCreate() {
               <Button title="Agendar"></Button>
             </View>
           </View>
-        </Background>
-      </ScrollView>
+        </ScrollView>
+      </Background>
 
-      <ModalView visible={openModal}>
+      <ModalView visible={openModal} closeModal={handleCloseModal}>
         <Modal handleModalSelect={handleModalSelect} />
       </ModalView>
     </KeyboardAvoidingView>

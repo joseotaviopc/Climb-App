@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, Image, Button } from "react-native";
 
 import { ButtonIcon } from "../../components/ButtonIcon";
@@ -7,13 +7,17 @@ import { Background } from "../../components/Background";
 import IllustrationImg from "../../assets/illustration.png";
 import { useNavigation } from "@react-navigation/native";
 
-import { theme } from "../../global/styles/theme";
+import { AuthContext } from "../../hooks/auth";
+
 import { styles } from "./styles";
 
 export function SignIn() {
   // const { primary } = theme.colors;
 
   const navigation = useNavigation();
+
+  const context = useContext(AuthContext);
+  console.log(context);
 
   return (
     <Background>
@@ -34,12 +38,6 @@ export function SignIn() {
             Crie grupos para escalar as vias {"\n"}
             favoritas com seus amigos
           </Text>
-
-          {/* <Button
-            color={primary}
-            title="Entrar"
-            onPress={() => navigation.navigate("Home")}
-          /> */}
 
           <ButtonIcon
             title="Entrar com email"

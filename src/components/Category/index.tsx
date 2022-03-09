@@ -1,5 +1,9 @@
 import React from "react";
-import { RectButton, RectButtonProps } from "react-native-gesture-handler";
+import {
+  GestureHandlerRootView,
+  RectButton,
+  RectButtonProps,
+} from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import { SvgProps } from "react-native-svg";
 import { View, Text } from "react-native";
@@ -24,22 +28,24 @@ export function Category({
   const { secondary30, secondary40, secondary50, secondary85 } = theme.colors;
 
   return (
-    <RectButton {...rest}>
-      <LinearGradient
-        style={styles.container}
-        colors={[secondary30, secondary50]}
-      >
+    <GestureHandlerRootView>
+      <RectButton {...rest}>
         <LinearGradient
-          style={[styles.content, { opacity: checked ? 1 : 0.5 }]}
-          colors={[checked ? secondary85 : secondary50, secondary40]}
+          style={styles.container}
+          colors={[secondary30, secondary50]}
         >
-          {hasCheckBox && (
-            <View style={checked ? styles.checked : styles.check} />
-          )}
-          <Icon width={48} height={48} />
-          <Text style={styles.title}>{title}</Text>
+          <LinearGradient
+            style={[styles.content, { opacity: checked ? 1 : 0.5 }]}
+            colors={[checked ? secondary85 : secondary50, secondary40]}
+          >
+            {hasCheckBox && (
+              <View style={checked ? styles.checked : styles.check} />
+            )}
+            <Icon width={48} height={48} />
+            <Text style={styles.title}>{title}</Text>
+          </LinearGradient>
         </LinearGradient>
-      </LinearGradient>
-    </RectButton>
+      </RectButton>
+    </GestureHandlerRootView>
   );
 }

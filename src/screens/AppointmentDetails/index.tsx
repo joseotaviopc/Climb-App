@@ -5,7 +5,7 @@ import {
   RectButton,
 } from "react-native-gesture-handler";
 import { theme } from "../../global/styles/theme";
-import { Button, FlatList, ImageBackground, Text, View } from "react-native";
+import { FlatList, ImageBackground, Text, View } from "react-native";
 import BannerImg from "../../assets/banner.png";
 import { Fontisto } from "@expo/vector-icons";
 import { styles } from "./styles";
@@ -13,10 +13,10 @@ import { styles } from "./styles";
 import { Background } from "../../components/Background";
 import { ListDivider } from "../../components/ListDivider";
 import { ListHeader } from "../../components/ListHeader";
-import { Header } from "../../components/Header";
-import { Member } from "../../components/Member";
 import { useNavigation } from "@react-navigation/native";
 import { ButtonIcon } from "../../components/ButtonIcon";
+import { Header } from "../../components/Header";
+import { Member } from "../../components/Member";
 
 export function AppointmentDetails() {
   const members = [
@@ -40,11 +40,6 @@ export function AppointmentDetails() {
     },
   ];
   const navigation = useNavigation();
-  const { primary } = theme.colors;
-
-  function handleGoBack() {
-    navigation.goBack();
-  }
 
   return (
     <Background>
@@ -63,7 +58,8 @@ export function AppointmentDetails() {
         <View style={styles.bannerContent}>
           <Text style={styles.title}>Esportiva</Text>
           <Text style={styles.subtitle}>
-            Dia de puxar corda, malhar os braços e se divertir.!
+            Dia de puxar corda, malhar os braços e se divertir! {`\n`}Vem que é
+            só alegria!
           </Text>
         </View>
       </ImageBackground>
@@ -87,9 +83,6 @@ export function AppointmentDetails() {
             />
           </RectButton>
         </GestureHandlerRootView>
-        {/* <View style={styles.footer}>
-          <Button title="Confirmar escalada" color={primary} onPress={null} />
-        </View> */}
       </View>
     </Background>
   );

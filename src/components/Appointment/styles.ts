@@ -49,6 +49,14 @@ player: {
   fontFamily: theme.fonts.text500,
   fontSize: 13,
   marginLeft: 7,
+},
+guildIconContainer:{
+  width: 64,
+  height: 68,
+  borderRadius: 8,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: 20
 }
 
 });

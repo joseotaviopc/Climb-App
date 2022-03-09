@@ -90,14 +90,14 @@ Estilo *Stack*
 - Criando gradiente com ```expo-linear-gradient```
   - aplicando no componente ```<Background>```, passando props *ReactNode* para os *childrens*
 
-# *To-do*
-## ====================
-- 1:58
-## ====================
-
 ``` js
 <GestureHandlerRootView>
   <RectButton>
   </RectButton>
 </GestureHandlerRootView>
 ```
+
+
+### ====================
+- #4 0:53
+### ====================

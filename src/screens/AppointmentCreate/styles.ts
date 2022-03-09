@@ -6,7 +6,10 @@ export const styles = StyleSheet.create({
     flex: 1
   },
   content: {
-    paddingHorizontal: 24
+    marginHorizontal: 24
+  },
+  adjustcategory: {
+    marginHorizontal: -24
   },
   label: {
     fontSize: 18,
@@ -16,7 +19,7 @@ export const styles = StyleSheet.create({
   },
   form: {
     // paddingHorizontal: 24,
-    // marginTop: 32,
+    marginTop: 32,
   },
   select: {
     flexDirection: 'row',
@@ -36,7 +39,8 @@ export const styles = StyleSheet.create({
   image: {
     width: 64,
     height: 68,
-    backgroundColor: theme.colors.secondary50,
+    backgroundColor: theme.colors.secondary40,
+    borderColor: theme.colors.secondary50,
     borderWidth: 1,
     borderRadius: 8,
   },
