@@ -1,23 +1,26 @@
-import React, { useContext } from "react";
-import { View, Text, Image, Button } from "react-native";
+import React from "react";
+import { View, Text, Image, Alert, ActivityIndicator } from "react-native";
 
 import { ButtonIcon } from "../../components/ButtonIcon";
 import { Background } from "../../components/Background";
 
 import IllustrationImg from "../../assets/illustration.png";
-import { useNavigation } from "@react-navigation/native";
 
-import { AuthContext } from "../../hooks/auth";
+import { useAuth } from "../../hooks/auth";
 
 import { styles } from "./styles";
+import { theme } from "../../global/styles/theme";
 
 export function SignIn() {
-  // const { primary } = theme.colors;
+  const { loading, signIn } = useAuth();
 
-  const navigation = useNavigation();
-
-  const context = useContext(AuthContext);
-  console.log(context);
+  async function handleSignIn() {
+    try {
+      await signIn();
+    } catch (error) {
+      Alert.alert("error");
+    }
+  }
 
   return (
     <Background>
@@ -39,10 +42,11 @@ export function SignIn() {
             favoritas com seus amigos
           </Text>
 
-          <ButtonIcon
-            title="Entrar com email"
-            onPress={() => navigation.navigate("Home")}
-          />
+          {loading ? (
+            <ActivityIndicator color={theme.colors.primary} />
+          ) : (
+            <ButtonIcon title="Entrar com email" onPress={handleSignIn} />
+          )}
         </View>
       </View>
     </Background>

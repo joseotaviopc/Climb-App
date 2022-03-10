@@ -97,6 +97,10 @@ Estilo *Stack*
 </GestureHandlerRootView>
 ```
 
+## Autenticação OAuth2
+
+- Registrar o app
+- AuthSession
 
 ### ====================
 - #4 0:53
