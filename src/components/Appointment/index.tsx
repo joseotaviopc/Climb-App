@@ -29,7 +29,8 @@ export function Appointment({ data, ...rest }: Props) {
   const [category] = categories.filter(
     (item) => item.id === Number(data.category)
   );
-  const { owner } = data.guild;
+
+  const owner = data.guild;
   const { primary, on, secondary50, secondary70 } = theme.colors;
   const navigation = useNavigation();
 
@@ -45,12 +46,12 @@ export function Appointment({ data, ...rest }: Props) {
             style={styles.guildIconContainer}
             colors={[secondary50, secondary70]}
           >
-            <GuildIcon />
+            <GuildIcon guildId={data.id} iconId={data.icon} />
           </LinearGradient>
 
           <View style={styles.content}>
             <View style={styles.header}>
-              <Text style={styles.title}>{data.guild.name}</Text>
+              <Text style={styles.title}>{data.name}</Text>
 
               <Text style={styles.category}>{category.title}</Text>
             </View>

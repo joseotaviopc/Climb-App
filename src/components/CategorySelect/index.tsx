@@ -18,6 +18,7 @@ export function CategorySelect({
   hasCheckBox = false,
 }: Props) {
   return (
+    // ScrollView para poucos itens
     <ScrollView
       style={styles.container}
       horizontal
